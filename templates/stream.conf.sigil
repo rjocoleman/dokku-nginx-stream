@@ -7,6 +7,7 @@
 
 server {
     listen     {{ $listen_port }};
+    proxy_protocol on;
     proxy_pass {{$.APP}}-tcp-{{ $upstream_port }};
 }
 
@@ -21,6 +22,7 @@ server {
 
 server {
     listen     {{ $listen_port }} udp;
+    proxy_protocol on;
     proxy_pass {{$.APP}}-udp-{{ $upstream_port }};
 }
 

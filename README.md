@@ -5,7 +5,7 @@
 **Note:** Only one tcp/udp port per app is supported
 
 Dokku NGINX Stream gives the ability to open up tcp/udp ports
-to the outside world. This can be usefull when your application
+to the outside world. This can be useful when your application
 speaks more than http.
 
 **Note:** Your app must use the proxy plugin.
@@ -14,7 +14,7 @@ speaks more than http.
 
 ```sh
 # dokku 0.5+
-$ sudo dokku plugin:install https://github.com/rvanlaar/dokku-nginx-stream.git
+$ sudo dokku plugin:install https://github.com/rjocoleman/dokku-nginx-stream.git
 ```
 ## Usage
 Nginx Stream leverages the proxy plugin for enabling tcp ports:
@@ -29,7 +29,7 @@ dokku ps:rebuild
 a rebuild or deploy.
 
 More information on proxy configuration can be found here:
-[dokky port management](http://dokku.viewdocs.io/dokku/networking/port-management/)
+[dokku port management](https://dokku.com/docs/networking/port-management/)
 
 ## Technical
 
@@ -43,3 +43,7 @@ stream {
     include /home/dokku/*/nginx-stream.conf;
 }
 ```
+
+## Notes
+
+This is my personal modification of the work from rvanlaar and [josegonzalez](https://github.com/josegonzalez/dokku-nginx-stream)
