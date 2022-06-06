@@ -8,8 +8,10 @@ plugin-install () {
     echo "%dokku ALL=(ALL) NOPASSWD:/bin/mv /tmp/dokku-*-nginx_stream_build_config*/stream.conf* /etc/nginx/app-stream/*" \
         > "$NGINX_STREAM_SUDOERS_FILE"
     local NGINX_CONF="/etc/nginx/nginx.conf"
+    grep -qxF 'include /etc/nginx/nginx-stream.conf;' $NGINX_CONF || echo 'include /etc/nginx/nginx-stream.conf;' >> $NGINX_CONF
     mkdir -p "/etc/nginx/app-stream"
-    cat >> $NGINX_CONF << EOF
+    local NGINX_STREAM_CONF="/etc/nginx/nginx-stream.conf"
+    cat > $NGINX_STREAM_CONF << EOF
 stream {
     include /etc/nginx/app-stream/*.conf;
 }
